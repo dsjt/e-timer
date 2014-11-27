@@ -22,6 +22,16 @@
 
 ;; This program allow you to use timer in Emacs and operate it with Emacs.
 
+;; how to use
+
+;; Add your .emacs followings.
+;; (require 'e-timer)
+;; (setq e-timer-music-command path)
+;; (setq e-timer-alert-resources path)
+
+;; You can set timer with M-x e-tiemr-set-timer
+;; You can cancel timer with M-x e-timer-cancel
+
 ;;; Code:
 
 
@@ -65,4 +75,5 @@
 
 (provide 'e-timer)
 ;;; e-timer.el ends here
+
 
