@@ -30,7 +30,7 @@
 ;; (setq e-timer-alert-resources path)
 
 ;; You can set timer with M-x e-tiemr-set-timer
-;; You can cancel timer with M-x e-timer-cancel
+;; You can cancel timer with M-x e-timer-cancel-timer
 
 ;;; Code:
 
@@ -64,7 +64,7 @@
         time
       nil)))
 
-(defun e-timer-cancel ()
+(defun e-timer-cancel-timer ()
   (interactive)
   (when (y-or-n-p "End timer? ")
     (cancel-timer e-timer-object)))
