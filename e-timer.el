@@ -39,30 +39,30 @@
   (let ((command e-timer-music-command)
         (alert-resources e-timer-alert-resources))
     (cond ((and command alert-resources)
-           (start-process "*e-timer*" e-timer-buffer-name command alert-resources))
+           (start-process "*e-timer*" e-timer-buffer-name command alert-resources)
+           (message "TIME UP!"))
           (t (progn (message "Inappropriate command or alert-resources.")
                     nil)))))
 
 (defun e-timer-set-timer (effort-time)
-  (interactive "sSet [default: min] : \n")
+  (interactive "sSet time : \n")
   (e-timer-set-timer-1 effort-time))
 
 (defun e-timer-set-timer-1 (effort-time)
   (let ((time (timer-duration effort-time)))
     (if (setq e-timer-object (run-with-timer time nil 'e-timer-alert))
-        t
+        time
       nil)))
 
 (defun e-timer-cancel ()
   (interactive)
   (when (y-or-n-p "End timer? ")
     (cancel-timer e-timer-object)))
-;; (setq tc_timer (run-with-timer 3 nil (lambda () (message "ths"))))
-;; tc_timer
-;; [t 21622 45792 280000 nil (lambda nil (message "ths")) nil nil 0]
-;; [nil 21622 45792 280000 nil (lambda nil (message "ths")) nil nil 0]
+
+(defun e-timer-alert-test ()
+  (interactive)
+  (e-timer-alert))
 
 (provide 'e-timer)
 ;;; e-timer.el ends here
 
-(load-file "~/programming/elisp/e-timer/private.el")
